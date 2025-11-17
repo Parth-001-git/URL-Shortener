@@ -1,0 +1,18 @@
+# H2 In-Memory Database Configuration for Dev/Test
+spring:
+  datasource:
+    url: jdbc:h2:mem:devdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    # This will create/drop the schema on startup, perfect for dev and tests
+    # For production, we'll rely on the Flyway migration (V1__init.sql)
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
